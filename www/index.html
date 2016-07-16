@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Huoran Chat</title>
+    </head>
+    <body>
+        <input type="text" placeHolder="id" id="idInput" />
+        <input type="password" placeHolder="password" id="pwdInput" />
+        <input type="button" value="Login" id="loginBtn" />
+        <input type="button" value="Invite" id="inviteBtn" disabled = true />
+        <div id = 'status'>Please login!</div>
+        <div>Users:<div>
+        <div id = "users"></div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="scripts/huoranChat.js"></script>
+        <video id="localStreamView" autoplay></video>
+        <video id="remoteStreamView" autoplay></video>
+    </body>
+</html>
