@@ -38,11 +38,11 @@ var login = function(userId, password) {
     });
 };
 
-var register = function(userId, password) {
-    if (!isVaildId) {
+var register = function(user) {
+    if (!isVaildId(user.userid)) {
         console.log('The id is not vaild.');
     }
-    if (!isVaildPassword)
+    if (!isVaildPassword(user.password))
         console.log('The password is not valid.');
     db.registerUser(user, function(r) {});
 };
@@ -61,8 +61,7 @@ var isVaildPassword = function(password) {
 
 ///=============
 //db.deleteUser({});
-register('zige', '123466');
-register('zige', '123456');
+register({ userid: 'naozi', password: '123456' });
 
 
 

@@ -1,0 +1,193 @@
+input[type=button] {
+    width: 80px;
+    height: 30px;
+    font-size: .8em;
+    background-color: rgb(150, 150, 255);
+}
+
+input[type=password],
+input[type=text] {
+    width: 160px;
+    height: 30px;
+    margin: 2px;
+    font-size: .8em;
+    background-color: rgb(200, 200, 240);
+}
+
+span.label {
+    width: 100px;
+    text-align: left;
+    font-size: .8em;
+}
+
+#loginWindow {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(5, 5, 5, .6);
+    text-align: center;
+    color: #fff;
+    display: block;
+    padding-top: 200px;
+    z-index: 1;
+}
+
+#panel {
+    position: relative;
+    width: 20%;
+    height: 100%;
+    float: left;
+    background-color: #2e3238;
+    color: rgb(200, 200, 200);
+    font-size: 1.2em;
+    text-align: center;
+}
+
+#userProfileWrapper {
+    height: 80px;
+    width: 100%;
+}
+
+#userListWrapper {}
+
+#chatWrapper {
+    float: left;
+    width: 80%;
+    height: 100%;
+    background-color: rgb(230, 230, 230);
+}
+
+#mainUIWrapper {
+    width: 1000px;
+    height: 600px;
+    margin: 0 auto;
+}
+
+div.userListItem {
+    border: 1px solid #555555;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    height: 40px;
+    font-size: 1.5em;
+    line-height: 40px;
+    overflow: hidden;
+}
+
+div.userListItem_textWrapper {
+    top: 0;
+    bottom: 0;
+    vertical-align: middle;
+    text-align: center;
+    float: left;
+}
+
+img.userListItem_icon {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+    float: left;
+}
+
+img.userProfile_icon {
+    width: 40px;
+    height: 40px;
+}
+
+hr.charUI {
+    height: 1px;
+    border: none;
+    border-top: 1px solid #555555;
+}
+
+#chatTitle {
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 2em;
+}
+
+#userProfileIconWrapper {
+    height: 40px;
+    width: 40px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    float: left;
+    vertical-align: middle;
+}
+
+#userIdWrapper {
+    height: 40px;
+    width: 120px;
+    margin-top: 20px;
+    font-size: 1.5em;
+    float: left;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+#inputAreaWrapper {
+    height: 180px;
+    width: 95%;
+    margin-left: 2.5%;
+}
+
+#messageArea {
+    height: 330px;
+    width: 100%;
+    margin: 10px;
+    overflow: auto;
+}
+
+#sendBtn {
+    margin-top: 10px;
+    height: 15%;
+    float: right;
+}
+
+#interactionBar {
+    height: 15%;
+    width: 100%;
+}
+
+#messageInputWrapper {
+    height: 70%;
+    width: 100%;
+}
+
+#messageInput {
+    height: 100%;
+    width: 100%;
+}
+
+div.sentMsg {
+    width: 40%;
+    padding-top: 10px;
+    padding-left: 55%;
+    padding-right: 5%;
+    text-align: right;
+    float: right;
+}
+
+div.recievedMsg {
+    width: 40%;
+    padding-top: 10px;
+    padding-right: 55%;
+    padding-left: 5%;
+    text-align: left;
+    float: left;
+}
+
+span.messageInfo {
+    font-size: 1em;
+    color: grey;
+}
+
+span.message {
+    font-size: 1.2em;
+}
