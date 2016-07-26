@@ -90,7 +90,24 @@ io.on("connection", function(socket) {
                 savedConnections[id].emit('onicecandidate', socket.userId, candidate);
                 console.log(socket.userId + ' sends iceCandidates to ' + id);
             }
+        }
+    });
 
+    socket.on('sendMsg', function(info) {
+        var from = info.from;
+        var to = info.to;
+        console.log(info);
+        if (socket.userId != from) {
+            socket.emit("sendMsgFailed", "Authentication failed.");
+            console.log(socket.userId + ' send msg [' + info.msg + '] failed, Authentication failed');
+            return;
+        }
+        if (savedConnections[to] != undefined) {
+            savedConnections[to].emit('onMessage', info);
+            console.log(socket.userId + ' sends [' + info.msg + '] to ' + to);
+        } else {
+            socket.emit("sendMsgFailed", "User does not exist.");
+            console.log(socket.userId + ' send msg [' + info.msg + '] failed, user does not exist.');
         }
     });
 
