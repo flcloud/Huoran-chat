@@ -9,15 +9,35 @@ input[type=password],
 input[type=text] {
     width: 160px;
     height: 30px;
-    margin: 2px;
     font-size: .8em;
     background-color: rgb(200, 200, 240);
 }
 
-span.label {
-    width: 100px;
-    text-align: left;
+table.windowContent {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.row {
+    width: 400px;
+    height: 36px;
+    float: none;
+}
+
+div.label {
+    width: 200px;
+    height: 30px;
+    text-align: right;
+    padding-right: 10px;
     font-size: .8em;
+    line-height: 30px;
+    float: left;
+    vertical-align: middle;
+}
+
+input.row {
+    float: left;
+    vertical-align: middle;
 }
 
 #loginWindow {
@@ -30,8 +50,23 @@ span.label {
     text-align: center;
     color: #fff;
     display: block;
-    padding-top: 200px;
+    padding-top: 100px;
     z-index: 1;
+}
+
+#registerWrapper {
+    display: none;
+}
+
+#loginWrapper {
+    display: block;
+}
+
+#loginStatus,
+#registerStatus {
+    color: red;
+    display: none;
+    padding-top: 5px;
 }
 
 #panel {
@@ -63,6 +98,7 @@ span.label {
     width: 1000px;
     height: 600px;
     margin: 0 auto;
+    display: none;
 }
 
 div.userListItem {
@@ -135,6 +171,7 @@ hr.charUI {
     height: 180px;
     width: 95%;
     margin-left: 2.5%;
+    display: none;
 }
 
 #messageArea {
@@ -190,4 +227,23 @@ span.messageInfo {
 
 span.message {
     font-size: 1.2em;
+}
+
+div.userItem_bubble {
+    width: 30px;
+    height: 20px;
+    margin: 10px;
+    background: url(../resources/icons/new_message_bubble.png);
+    text-align: center;
+    font-size: 0.8em;
+    color: white;
+    vertical-align: middle;
+    float: right;
+    line-height: 20px;
+    overflow: hidden;
+    z-index: 3;
+}
+
+div.userItem_idWrapper {
+    float: left;
 }

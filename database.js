@@ -57,12 +57,19 @@ var Database = function(url) {
             users.find({
                 'userid': user.userid
             }).next(function(err, doc) {
-                if (err != null)
+                if (err != null) {
                     console.log(err);
+                    if (callback != null && callback != undefined)
+                        callback(-1);
+                    db.close();
+                    return;
+                }
                 if (doc == null) {
                     users.insertOne(user, function(err, r) {
                         if (err != null) {
                             console.log('User registration failed.');
+                            if (callback != null && callback != undefined)
+                                callback(-2);
                             //TODO : concurrency issue occurs when 2 
                             // requests come at the same time
                         } else {
@@ -74,6 +81,8 @@ var Database = function(url) {
                     });
                 } else {
                     console.log('The user id is already exist!');
+                    if (callback != null && callback != undefined)
+                        callback(1);
                     db.close();
                 }
             });

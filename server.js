@@ -10,7 +10,9 @@ var https = require('https');
 var fs = require('fs');
 var privateKey = fs.readFileSync('ca/server.key');
 var certificate = fs.readFileSync('ca/server.crt');
-var server = https.createServer({
+var http = require('http');
+var httpServer = http.createServer(app);
+var httpsServer = https.createServer({
     key: privateKey,
     cert: certificate,
     passphrase: 'm93x02l15'
@@ -18,7 +20,8 @@ var server = https.createServer({
 
 var socketIO = require('socket.io');
 var io = new socketIO();
-io.attach(server);
+io.attach(httpServer);
+io.attach(httpsServer);
 
 var users = [];
 var savedConnections = {};
@@ -42,7 +45,7 @@ io.on("connection", function(socket) {
             'password': password
         }, function(docs) {
             if (docs.length == 0) {
-                console.log(id + 'login failed!');
+                console.log(id + ' login failed!');
                 socket.emit("loginFailed");
                 return false;
             } else {
@@ -55,6 +58,33 @@ io.on("connection", function(socket) {
                 console.log(id + " joins the room.");
                 return true;
             }
+        });
+    });
+
+    socket.on('register', function(info) {
+        db.registerUser(info, function(r) {
+            var id = info.userid;
+            var password = info.password;
+            if(id==null || password == null)
+                console.log("null pointer in register");
+            if (typeof r == "number") {
+                switch (r) {
+                    case -1:
+                    case -2:
+                        console.log("Error occured during registration.");
+                        socket.emit("RegError", id);
+                        break;
+                    case 1:
+                        console.log("UserId " + id + " is already exist!");
+                        socket.emit("UserIdExist", id);
+                        break;
+                    default:
+                        //do nothing
+                }
+            } else {
+                socket.emit("registerSuccessful", id);
+            }
+
         });
     });
 
@@ -114,21 +144,11 @@ io.on("connection", function(socket) {
 });
 app.use("/", express.static(__dirname + '/www'));
 
-var port = 808;
-server.listen(port);
-
-console.log("Server started at port " + port + '.');
-
-
-
-var register = function(userId, password) {
-    if (!isVaildId) {
-        console.log('The id is not vaild.');
-    }
-    if (!isVaildPassword)
-        console.log('The password is not valid.');
-    db.registerUser(user, function(r) {});
-};
+var httpPort = 808, httpsPort = 809;
+httpServer.listen(httpPort);
+httpsServer.listen(httpsPort);
+console.log("Http server started at port " + httpPort + '.');
+console.log("Https server started at port " + httpsPort + '.');
 
 var isVaildId = function(id) {
     //TODO

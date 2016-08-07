@@ -61,8 +61,8 @@ var isVaildPassword = function(password) {
 
 ///=============
 //db.deleteUser({});
-register({ userid: 'naozi', password: '123456' });
-
+register({ userid: 'yeranran', password: '123456' });
+register({ userid: 'fuyun', password: '123456' });
 
 
 
